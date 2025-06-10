@@ -1,3 +1,5 @@
+import {Link, Outlet} from "react-router-dom"
+
 const AdminDashBoard=()=>{
     return(
          <>
@@ -9,12 +11,18 @@ const AdminDashBoard=()=>{
                 </div>   
             <div id="admindata">
                 <div id="adminleftmenu">
-                  
-                    Create New User
+                 <Link to="createuser" className="adminmenu">
+                 
+                  Create New User
+
+                 </Link> 
+                   
                 </div>
                
                 <div id="rightdata">
-                    dfgdfg
+                  
+                        <Outlet/>
+
                 </div>
                 
             </div>  

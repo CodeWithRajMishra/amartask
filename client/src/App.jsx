@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import Home from "./pages/Home";
 import AdminDashBoard from "./pages/AdminDashBoard";
+import CreateUser from "./pages/CreateUser";
 const App=()=>{
   return(
     <>
@@ -15,6 +16,7 @@ const App=()=>{
      
         <Routes>
            <Route path="admindashboard" element={<AdminDashBoard/>}>
+             <Route path="createuser" element={<CreateUser/>}/>
            
            
            </Route>

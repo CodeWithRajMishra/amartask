@@ -1,5 +1,7 @@
 const AdminModel = require("../models/adminModel");
-
+const UserModel= require("../models/userModel");
+const userPassword= require("../middlewares/randomPassword");
+var nodemailer = require('nodemailer');
 
 const adminLogin=async(req, res)=>{
      const { adminid, password }= req.body;
@@ -23,6 +25,39 @@ const adminLogin=async(req, res)=>{
      }
 }
 
+const createUser=async(req, res)=>{
+   const { name , email, designation}=req.body; 
+   const UserPass=  userPassword();
+  
+   var transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'rajmishra3@gmail.com',
+    pass: 'ngbq ieiu hhhp qxdh'
+  }
+});
+
+
+ var mailOptions = {
+      from: 'rajmishtra3@gmail.com',
+      to: email,
+      subject: 'Sending Email by Admin',
+      text:`Welcome :  ${name}!\n
+           Your Password : ${UserPass} \n You can Login With This Password ` 
+    };
+
+     transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email Succ sent: ' + info.response);
+        res.send(info.response);
+      }
+    });
+}
+
+
 module.exports={
-    adminLogin
+    adminLogin,
+    createUser
 }
