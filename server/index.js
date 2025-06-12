@@ -2,6 +2,7 @@ const express = require("express");
 const app= express();
 require("dotenv").config();
 const AdminRoute= require("./routes/adminRoute");
+const UserRoute= require("./routes/userRoute");
 const bodyParser = require('body-parser')
 const cors= require("cors");
 const Dbcon= require("./config/dbconn");
@@ -15,6 +16,7 @@ Dbcon();
 
 
 app.use("/admin", AdminRoute);
+app.use("/user", UserRoute);
 
 
 app.listen(Port, ()=>{
