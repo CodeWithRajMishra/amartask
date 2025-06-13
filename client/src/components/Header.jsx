@@ -1,22 +1,18 @@
-
 import Form from 'react-bootstrap/Form';
-
 import { FaUserCircle } from "react-icons/fa";
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import BackEndUrl from '../config/BackendUrl';
+import  {useNavigate} from "react-router-dom";
 const Header=()=>{
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-
-
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const navigate= useNavigate();
 
   const handleSubmit=async(e)=>{
      e.preventDefault();
@@ -24,6 +20,9 @@ const Header=()=>{
       try {
            const response = await axios.post(api, {email, password});
            console.log(response)
+           localStorage.setItem("username", response.data.User.name);
+           localStorage.setItem("userid", response.data.User._id);
+          navigate("userdashboard")
       } catch (error) {
           console.log(error);
       }

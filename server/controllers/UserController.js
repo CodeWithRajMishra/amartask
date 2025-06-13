@@ -1,5 +1,5 @@
 const UserModel= require("../models/userModel");
-
+const TaskModel= require("../models/taskModel");
 
 const loginCheck=async(req, res)=>{
     const { email, password}=req.body;
@@ -21,7 +21,21 @@ const loginCheck=async(req, res)=>{
      
 }
 
+const myTaskList=async(req, res)=>{
+  const { id } = req.query;
+  console.log(id);
+   try {
+        const Task= await TaskModel.find({userid:id});
+        console.log(Task);
+        res.status(200).send(Task);
+   } catch (error) {
+     console.log(error);
+   }
+}
+
+
 
 module.exports={
-    loginCheck
+    loginCheck,
+    myTaskList
 }

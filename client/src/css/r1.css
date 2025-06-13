@@ -57,3 +57,24 @@
     font-size: 15px;
     text-decoration: none;
 }
+
+#userheader
+{
+    width: 100%;
+    background-color: lightblue;
+    padding: 20px;
+}
+
+#userdisplayname
+{
+    padding: 10px;
+    border: 1px solid rgb(142, 245, 142);
+    background-color: aquamarine;
+    text-align: right;
+    font-weight: bold;
+}
+
+h3{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
