@@ -21,8 +21,16 @@ useEffect(()=>{
     loadData();
 }, [])
 
-const submitTask=(id)=>{
-    
+const submitTask=async(id)=>{
+      let api=`${BackEndUrl}/user/completetask/?id=${id}`
+      try {
+         const response = await axios.get(api);
+         console.log(response)
+      } catch (error) {
+         console.log(error);
+      }
+
+       loadData();
 }
 
 
@@ -34,7 +42,13 @@ const ans= mydata.map((key)=>{
              <td>{key.description}</td>
               <td>{key.compday}</td>
               <td>
-                <Button onClick={()=>{submitTask(key._id)}}>Submit Task</Button>
+                {key.taskstatus ? (<>
+                  <Button style={{backgroundColor:"green"}} disabled>Task Submited</Button>
+                </>) :(<>
+                       <Button onClick={()=>{submitTask(key._id)}}>Submit Task</Button>
+                </>)}
+               
+               
               </td>
          </tr>
         

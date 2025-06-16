@@ -33,9 +33,20 @@ const myTaskList=async(req, res)=>{
    }
 }
 
+const taskComplete=async(req, res)=>{
+  const {id}= req.query;
+
+  try {
+         const Task= await TaskModel.findByIdAndUpdate(id, {taskstatus:true});
+         res.status(201).send({Task:Task, msg:"Succesfully Updated"});
+  } catch (error) {
+     console.log(error);
+  }
+}
 
 
 module.exports={
     loginCheck,
-    myTaskList
+    myTaskList,
+    taskComplete
 }

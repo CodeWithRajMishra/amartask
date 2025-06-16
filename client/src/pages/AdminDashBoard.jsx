@@ -34,6 +34,14 @@ const AdminDashBoard=()=>{
                   Assign Task
 
                  </Link> 
+
+                  <br/> <br />
+
+                  <Link to="taskdetail" className="adminmenu">
+                 
+                  Task Detail
+
+                 </Link> 
                    
                 </div>
                
